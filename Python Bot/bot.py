@@ -26,7 +26,7 @@ client = commands.Bot(command_prefix='', description=description)
 # Initiates bot and prints username and id
 @client.event
 async def on_ready():
-    activity = discord.Game(name="Fortnite")
+    activity = discord.Game(name="with LEGO's")
     await client.change_presence(status=discord.Status.idle, activity=activity)
     print('Logged in as')
     print(client.user.name)
@@ -149,10 +149,10 @@ async def on_message(message):
             # Plays the song if the directory leads to a music file, and sends a message if it does not
             if '.' in music_dir1:
                 source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio(music_dir1), volume=0.2)
+                await message.channel.send(content='Playing ' + music_dir[int(num_list[1]) - 1])
                 channel = message.author.voice.channel
                 globals()['vc'] = await channel.connect()
                 globals()['connect_voice'] = True
-                await message.channel.send(content='Playing ' + music_dir[int(num_list[1]) - 1])
                 globals()['vc'].play(source, after=lambda: print('done'))
             else:
                 await message.channel.send(content='Directory Does Not Lead to Music')
@@ -247,12 +247,12 @@ async def on_message(message):
                 self.value = value
 
         # Gives the message sender the rainbow name role
-        await gld.get_member(message.author.id).add_roles(gld.get_role(661376751930310686))
+        await gld.get_member(message.author.id).add_roles(gld.get_role('role_id'))
         while True:
             try:
                 # Generates a random integer less than the hex 0xFFFFFF and change the role color
                 rand_c = random.randint(0, 16777215)
-                await gld.get_role(661376751930310686).edit(colour=rand_color(rand_c))
+                await gld.get_role('role_id').edit(colour=rand_color(rand_c))
                 # Waits 1 second to reach the request limit slower
                 time.sleep(1)
             except:
@@ -263,6 +263,6 @@ async def on_message(message):
 # Runs the program or give an error
 if __name__ == '__main__':
     try:
-        client.run('NjA5ODg1MTk0NjczMDYxODg4.XgquHg.x20DgAWRfJ2Ng4fyT5zgJbLYbfI')
+        client.run('bot_token')
     except Exception as e:
-        input('An Error Has Occured ' + str(e))
+        input('An Error Has Occurred ' + str(e))

@@ -23,7 +23,7 @@ def digi_dis():
     # Adds together all numbers in num_list
     for x in num_list:
         num_fin = num_fin + x
-    return num_fin
+    return 'Output: ' + str(num_fin) + '\nSegment List: ' + str(num_list)
 
 
 # Runs the function 5 times
